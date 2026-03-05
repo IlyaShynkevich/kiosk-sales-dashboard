@@ -1,35 +1,36 @@
 # Kiosk Sales Dashboard
 
-Simple browser-based dashboard for kiosk sales tracking from Excel reports.
+Browser-based dashboard for kiosk sales analytics from Excel reports.
+
+## Live version
+- Netlify: `https://podschet-prodazh-kioska.netlify.app`
 
 ## Features
-- Upload `.xlsx` / `.xls` report files directly in the browser
+- Upload `.xlsx` / `.xls` files directly in the browser
 - Filter by sheet range (`from` -> `to`)
 - Search by product name
-- View per-product metrics:
-  - Opening stock
-  - Sold
-  - Leftover
-  - Replenishment needed
-  - Estimated revenue
-- Switch replenishment logic:
+- Product metrics: opening stock, sold, leftover, replenishment needed, estimated revenue
+- Replenishment modes:
   - `By sales` (needed = sold)
-  - `As in file` (uses the value from the Excel report)
+  - `As in file` (uses the "need to deliver" value from Excel)
+- RU/EN interface switch
 
-## Tech
+## Stack
 - Static frontend: `index.html`, `styles.css`, `app.js`
 - Excel parsing in browser via SheetJS (`xlsx` from CDN)
-- Deploy-ready for Netlify (`netlify.toml` included)
+- Hosting: Netlify
 
-## Local development
-You can open `index.html` directly in a browser, or run any static server if needed.
+## Run locally
+Use any static server from the project root, for example:
 
-## Deploy (Netlify Drop)
-1. Open `https://app.netlify.com/drop`
-2. Drag and drop the project folder
-3. Share the generated URL
+```bash
+python -m http.server 8000
+```
+
+Then open:
+
+`http://localhost:8000`
 
 ## Notes
 - Excel files are processed in the browser.
-- If you still see an old version after deploy, force refresh with `Ctrl + F5`.
-
+- If you see an old version after deploy, force refresh with `Ctrl + F5`.
