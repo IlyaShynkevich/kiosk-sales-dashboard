@@ -1,0 +1,5 @@
+﻿# Ignore local and generated files
+*.xlsx
+*.xls
+.DS_Store
+Thumbs.db

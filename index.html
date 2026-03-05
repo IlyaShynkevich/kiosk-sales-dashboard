@@ -1,0 +1,90 @@
+﻿<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Подсчет продаж киоска</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'/%3E" />
+  <link rel="shortcut icon" href="data:," />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=4" />
+</head>
+<body>
+  <div class="bg-shape bg-shape--1"></div>
+  <div class="bg-shape bg-shape--2"></div>
+
+  <main class="container">
+    <header class="hero">
+      <div class="hero-top">
+        <h1 data-i18n="appTitle">Подсчет продаж киоска</h1>
+        <label class="lang-switch">
+          <span data-i18n="language">Язык</span>
+          <select id="langSelect" aria-label="Language">
+            <option value="ru">RU</option>
+            <option value="en">EN</option>
+          </select>
+        </label>
+      </div>
+      <p data-i18n="appSubtitle">Отслеживание по товарам: сколько было, сколько продано, что осталось и сколько нужно довезти.</p>
+    </header>
+
+    <section class="panel controls">
+      <label class="field field--file">
+        <span data-i18n="excelFile">Excel файл</span>
+        <input type="file" id="fileInput" accept=".xlsx,.xls" />
+      </label>
+
+      <label class="field">
+        <span data-i18n="sheetFrom">Лист с</span>
+        <select id="fromSheet" disabled></select>
+      </label>
+
+      <label class="field">
+        <span data-i18n="sheetTo">по лист</span>
+        <select id="toSheet" disabled></select>
+      </label>
+
+      <label class="field field--search">
+        <span data-i18n="searchProduct">Поиск товара</span>
+        <input type="search" id="searchInput" placeholder="Например, pod" data-i18n-placeholder="searchPlaceholder" disabled />
+      </label>
+
+      <fieldset class="field field--mode" id="needModeWrap" disabled>
+        <legend data-i18n="needToDeliver">Нужно довезти</legend>
+        <label><input type="radio" name="needMode" value="sales" checked> <span data-i18n="needBySales">По продажам</span></label>
+        <label><input type="radio" name="needMode" value="sheet"> <span data-i18n="needAsInFile">Как в файле</span></label>
+      </fieldset>
+    </section>
+
+    <section class="stats" id="stats"></section>
+
+    <section class="panel table-panel">
+      <div class="table-header">
+        <h2 data-i18n="products">Товары</h2>
+        <div id="status" class="status" data-i18n="uploadPrompt">Загрузите Excel-файл</div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th data-i18n="colProduct">Товар</th>
+              <th data-i18n="colStart">Было</th>
+              <th data-i18n="colSold">Продано</th>
+              <th data-i18n="colLeft">Осталось</th>
+              <th data-i18n="colNeed">Нужно довезти</th>
+              <th data-i18n="colRevenue">Выручка</th>
+            </tr>
+          </thead>
+          <tbody id="rows"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+  <script src="app.js?v=6"></script>
+</body>
+</html>
+
