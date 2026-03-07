@@ -1,5 +1,4 @@
-﻿# Ignore local and generated files
-*.xlsx
+﻿*.xlsx
 *.xls
 .DS_Store
 Thumbs.db
